@@ -29,12 +29,15 @@
   ],
   "main": "./src/palindrom.js",
   "dependencies": {
+    "axios": "^0.15.3",
+    "events": "^1.1.1",
     "fast-json-patch": "^1.1.8",
     "json-patch-ot": "^1.0.1",
     "json-patch-ot-agent": "^1.1.2",
     "json-patch-queue": "^2.0.1",
     "jsonpatcherproxy": "^0.0.3",
-    "url": "^0.11.0"
+    "url": "^0.11.0",
+    "websocket": "^1.0.24"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
@@ -43,9 +46,14 @@
     "grunt-contrib-watch": "~0.6.1",
     "jasmine": "^2.4.0",
     "jsdom": "^9.5.0",
+    "json-loader": "^0.5.4",
+    "mocha": "^3.2.0",
+    "mock-socket": "^6.0.4",
+    "moxios": "^0.3.0",
+    "sinon": "^2.1.0",
     "webpack": "^2.2.1"
   },
   "scripts": {
-    "test": "jasmine JASMINE_CONFIG_PATH=test/jasmine.json"
+    "test": "mocha test/runner.js"
   }
 }
