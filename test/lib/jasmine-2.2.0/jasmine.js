@@ -792,12 +792,14 @@ getJasmineRequireObj().Env = function(j$) {
         spec.disable();
       }
 
-      return spec;
+      return spec;      
 
       function specResultCallback(result) {
+        window.palindromResults || (window.palindromResults = []);
         clearResourcesForRunnable(spec.id);
         currentSpec = null;
         reporter.specDone(result);
+        window.palindromResults.push(result);
       }
 
       function specStarted(spec) {

@@ -57,7 +57,7 @@ jasmineRequire.HtmlReporter = function(j$) {
           createDom('a', {className: 'title', href: 'http://jasmine.github.io/', target: '_blank'}),
           createDom('span', {className: 'version'}, j$.version)
         ),
-        createDom('ul', {className: 'symbol-summary'}),
+        createDom('ul', {className: 'symbol-summary', id: 'dots'}),
         createDom('div', {className: 'alert'}),
         createDom('div', {className: 'results'},
           createDom('div', {className: 'failures'})
@@ -85,6 +85,7 @@ jasmineRequire.HtmlReporter = function(j$) {
     };
 
     this.suiteDone = function(result) {
+
       if (result.status == 'failed') {
         failedSuites.push(result);
       }
