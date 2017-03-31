@@ -18,6 +18,8 @@ driver = new webdriver.Builder().
               "@ondemand.saucelabs.com:80/wd/hub").
   build();
 
+driver.get("/test/")
+
 driver.getTitle().then(function (title) {
     console.log("title is: " + title);
 });
