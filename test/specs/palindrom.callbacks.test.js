@@ -1,6 +1,6 @@
 global.WebSocket = require("mock-socket").WebSocket;
 
-const Palindrom = require("../../src/Palindrom");
+const Palindrom = require("../../src/palindrom");
 const assert = require("assert");
 const moxios = require("moxios");
 const sinon = require("sinon");
