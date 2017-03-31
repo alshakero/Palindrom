@@ -1,16 +1,9 @@
 language: node_js
-sudo: required
 dist: trusty
 before_script:
   - npm install
   - 'export PATH=$PWD/node_modules/.bin:$PATH'
-node_js: 6
+  - rackup  # start a Web server
+  - sleep 3 # give Web server some time to bind to sockets, etc
 addons:
-  firefox: latest
-  apt:
-    sources:
-      - google-chrome
-    packages:
-      - google-chrome-stable
-script:
-  - xvfb-run npm test
+  sauce_connect: true
