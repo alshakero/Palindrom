@@ -136,15 +136,8 @@ describe("PalindromDOM - Links -", () => {
         );
       });
 
-      /* disable this `createShadowRoot` with FF and Edge */
-      const isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") >
-        -1;
-      const isEdge = window.navigator.userAgent.toLowerCase().indexOf("edge") >
-        -1;
-
-      const func = isFirefox || isEdge ? xit : it;
-
-      func("relative path (nested, Shadow DOM content)", done => {
+      /* `createShadowRoot` is removed from FF and Edge */
+      xit("relative path (nested, Shadow DOM content)", done => {
         //wait for platform.js ready
         const historySpy = spyOn(window.history, "pushState");
 
