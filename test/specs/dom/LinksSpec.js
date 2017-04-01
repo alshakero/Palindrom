@@ -18,7 +18,6 @@ describe("PalindromDOM - Links -", () => {
     parent.appendChild(a);
     parent.addEventListener("click", clickHandler);
     fireEvent(a.firstChild, "click");
-
     parent.removeEventListener("click", clickHandler);
     parent.removeChild(a);
   }
