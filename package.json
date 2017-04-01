@@ -53,12 +53,12 @@
     "mock-socket": "^6.0.4",
     "moxios": "^0.3.0",
     "polyserve": "^0.16.0",
-    "sauce-connect-launcher": "^1.2.0",
+    "saucelabs": "^1.4.0",
     "selenium-webdriver": "^3.3.0",
     "sinon": "^2.1.0",
     "webpack": "^2.2.1"
   },
   "scripts": {
-    "test": "mocha test/runner.js && node SauceRunner.js"
+    "test": "mocha test/runner.js && node test/Sauce/ChromeRunner.js && node test/Sauce/FirefoxRunner.js && node test/Sauce/EdgeRunner.js"
   }
 }

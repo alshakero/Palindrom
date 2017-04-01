@@ -795,11 +795,10 @@ getJasmineRequireObj().Env = function(j$) {
       return spec;      
 
       function specResultCallback(result) {
-        window.palindromResults || (window.palindromResults = []);
         clearResourcesForRunnable(spec.id);
         currentSpec = null;
         reporter.specDone(result);
-        window.palindromResults.push(result);
+        palindromResults.push(result);
       }
 
       function specStarted(spec) {
@@ -920,6 +919,8 @@ getJasmineRequireObj().JsApiReporter = function() {
       this.finished = true;
       executionTime = timer.elapsed();
       status = 'done';
+
+      window.palindromJasmineStatus = { finished: true, executionTime };
     };
 
     this.status = function() {

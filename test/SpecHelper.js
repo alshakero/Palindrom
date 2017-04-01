@@ -1,3 +1,5 @@
+window.palindromResults = [];
+
 function triggerMouseup(elem) {
   fireEvent(elem || document.body, "mouseup");
 }
