@@ -109,8 +109,10 @@ describe("PalindromDOM - Links -", () => {
         moxios.wait(
           () => {
             createLinkTestNested(href);
-            expect(historySpy.calls.count()).toBe(1);
-            done();
+            moxios.wait(() => {
+              expect(historySpy.calls.count()).toBe(1);
+              done();
+            });
           },
           10
         );
@@ -233,7 +235,7 @@ describe("PalindromDOM - Links -", () => {
     });
 
     describe("should be accessible via API", () => {
-      it("should change history state programmatically", (done) => {
+      it("should change history state programmatically", done => {
         const historySpy = spyOn(window.history, "pushState");
 
         moxios.wait(
