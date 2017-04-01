@@ -23,7 +23,7 @@ const allCaps = [
     accessKey: accessKey,
     name: "Firefox: PalindromDOM tests",
     "tunnel-identifier": process.env.TRAVIS_JOB_NUMBER
-  }و  
+  },
   {
     browserName: "MicrosoftEdge",
     platform: "Windows 10",
