@@ -59,6 +59,6 @@
     "webpack": "^2.2.1"
   },
   "scripts": {
-    "test": "mocha test/runner.js && node test/Sauce/ChromeRunner.js && node test/Sauce/FirefoxRunner.js && node test/Sauce/EdgeRunner.js"
+    "test": "mocha test/runner.js && node test/Sauce/Runner.js"
   }
 }
