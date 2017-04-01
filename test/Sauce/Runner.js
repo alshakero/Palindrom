@@ -4,7 +4,7 @@ const username = process.env.SAUCE_USERNAME;
 const accessKey = process.env.SAUCE_ACCESS_KEY;
 
 const allCaps = [
-  {
+  { 
     browserName: "firefox",
     platform: "macOS 10.12",
     version: "52.0",
