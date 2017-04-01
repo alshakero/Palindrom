@@ -275,7 +275,7 @@ describe("PalindromDOM - Links -", () => {
   });
 
   describe("when attached to specific node", () => {
-    let palindrom, palindromB, palindromNode, nodeB;
+    var palindrom, palindromB, palindromNode, nodeB;
 
     beforeEach(done => {
       moxios.install();
