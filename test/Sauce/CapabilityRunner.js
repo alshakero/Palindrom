@@ -8,9 +8,9 @@
 const isCI = require("is-ci");
 const colors = require("colors");
 const SauceLabs = require("saucelabs");
+const webdriver = require("selenium-webdriver");
 
 function CapabilityRunner(caps, doneCallback) {
-  
   console.log("");
   console.log(caps.name.green);
 
@@ -22,12 +22,9 @@ function CapabilityRunner(caps, doneCallback) {
     password: accessKey
   });
 
-  const webdriver = require("selenium-webdriver");
-  let driver;
-
   const By = webdriver.By;
 
-  driver = new webdriver.Builder()
+  let driver = new webdriver.Builder()
     .withCapabilities(caps)
     .usingServer(
       "http://" + username + ":" + accessKey + "@localhost:4445/wd/hub"
@@ -67,7 +64,7 @@ function CapabilityRunner(caps, doneCallback) {
           }
         });
       },
-      2000
+      10000
     );
   });
 
@@ -111,7 +108,7 @@ function CapabilityRunner(caps, doneCallback) {
       driver.quit();
 
       saucelabs.updateJob(driver.sessionID, result, function() {
-          doneCallback(hadErrored === 0);
+        doneCallback(hadErrored === 0);
       });
     });
   }
