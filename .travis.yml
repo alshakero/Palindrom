@@ -3,7 +3,7 @@ dist: trusty
 before_script:
   - npm install
   - polyserve -p 8000 &
-  - sleep 10 # give polyserve some time to start
+  - sleep 5 # give polyserve some time to start
 node_js: 6
 addons:
   sauce_connect: true

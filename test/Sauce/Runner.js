@@ -7,7 +7,7 @@ const allCaps = [
   {
     browserName: "chrome",
     platform: "Windows 10",
-    version: "49.0",
+    version: "57.0",
     maxDuration: 10,
     username: username,
     accessKey: accessKey,
