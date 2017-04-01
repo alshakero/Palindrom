@@ -15,16 +15,6 @@ const allCaps = [
     "tunnel-identifier": process.env.TRAVIS_JOB_NUMBER
   },
   {
-    browserName: "MicrosoftEdge",
-    platform: "Windows 10",
-    version: "14.14393",
-    maxDuration: 20,
-    username: username,
-    accessKey: accessKey,
-    name: "MicrosoftEdge: PalindromDOM tests",
-    "tunnel-identifier": process.env.TRAVIS_JOB_NUMBER
-  },
-  {
     browserName: "firefox",
     platform: "Windows 10",
     version: "51.0",
@@ -32,6 +22,16 @@ const allCaps = [
     username: username,
     accessKey: accessKey,
     name: "Firefox: PalindromDOM tests",
+    "tunnel-identifier": process.env.TRAVIS_JOB_NUMBER
+  }و  
+  {
+    browserName: "MicrosoftEdge",
+    platform: "Windows 10",
+    version: "14.14393",
+    maxDuration: 20,
+    username: username,
+    accessKey: accessKey,
+    name: "MicrosoftEdge: PalindromDOM tests",
     "tunnel-identifier": process.env.TRAVIS_JOB_NUMBER
   }
 ];
