@@ -137,10 +137,12 @@ describe("PalindromDOM - Links -", () => {
       });
 
       /* disable this `createShadowRoot` with FF and Edge */
-      const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
-      const isEdge = window.navigator.userAgent.toLowerCase().indexOf("edge") > -1;
+      const isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") >
+        -1;
+      const isEdge = window.navigator.userAgent.toLowerCase().indexOf("edge") >
+        -1;
 
-      const func = (isFirefox || isEdge) ? xit : it;
+      const func = isFirefox || isEdge ? xit : it;
 
       func("relative path (nested, Shadow DOM content)", done => {
         //wait for platform.js ready
@@ -238,12 +240,23 @@ describe("PalindromDOM - Links -", () => {
     });
 
     describe("should be accessible via API", () => {
-      it("should change history state programatically", () => {
+      it("should change history state programmatically", (done) => {
         const historySpy = spyOn(window.history, "pushState");
 
-        palindrom.morphUrl("/page2");
+        moxios.wait(
+          () => {
+            palindrom.morphUrl("/page2");
 
-        expect(historySpy.calls.count()).toBe(1);
+            moxios.wait(
+              () => {
+                expect(historySpy.calls.count()).toBe(1);
+                done();
+              },
+              10
+            );
+          },
+          10
+        );
       });
     });
 
