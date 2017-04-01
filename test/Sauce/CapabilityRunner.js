@@ -64,7 +64,7 @@ function CapabilityRunner(caps, doneCallback) {
           }
         });
       },
-      10000
+      5000
     );
   });
 

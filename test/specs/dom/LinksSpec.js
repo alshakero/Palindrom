@@ -94,7 +94,7 @@ describe("PalindromDOM - Links -", () => {
                 expect(historySpy.calls.count()).toBe(1);
                 done();
               },
-              10
+              50
             );
           },
           10
