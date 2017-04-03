@@ -90,12 +90,14 @@ var PalindromDOM = (function () {
     var target = event.target;
 
     if (target.nodeName !== 'A') {
-        for (var i = 0; i < event.path.length; i++) {
-            if (event.path[i].nodeName == "A") {
-                target = event.path[i];
-                break;
-            }
+        var parent = target.parentNode;
+        while(parent) {
+          if (parent.nodeName == "A") {
+          target = parent;
+          break;
         }
+        parent = parent.parentNode;
+        }        
     }
 
     //needed since Polymer 0.2.0 in Chrome stable / Web Plaftorm features disabled

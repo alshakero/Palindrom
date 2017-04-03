@@ -5628,7 +5628,7 @@ var PalindromDOM = (function () {
     this.element.addEventListener('palindrom-redirect-pushstate', this.historyHandler);
     /* backward compatibility: for people using old puppet-redirect */
     this.element.addEventListener('puppet-redirect-pushstate', this.historyHandlerDeprecated);
-
+    
     options.callback = function addDOMListeners(obj){
       this.listen();
       onDataReady && onDataReady.call(this, obj);
@@ -5685,12 +5685,14 @@ var PalindromDOM = (function () {
     var target = event.target;
 
     if (target.nodeName !== 'A') {
-        for (var i = 0; i < event.path.length; i++) {
-            if (event.path[i].nodeName == "A") {
-                target = event.path[i];
-                break;
-            }
+        var parent = target.parentNode;
+        while(parent) {
+          if (parent.nodeName == "A") {
+          target = parent;
+          break;
         }
+        parent = parent.parentNode;
+        }        
     }
 
     //needed since Polymer 0.2.0 in Chrome stable / Web Plaftorm features disabled
@@ -5737,7 +5739,12 @@ var PalindromDOM = (function () {
   };
 
   /* backward compatibility, not sure if this is good practice */
-  if(typeof global === 'undefined') { var global = window };
+  if(typeof global === 'undefined') {
+    if(typeof window !== 'undefined') { /* incase neither window nor global existed, e.g React Native */
+      var global = window;
+    }
+    else { var global = {}; }
+  }
   global.PuppetDOM = PalindromDOM;
   
   /* Since we have Palindrom bundled,

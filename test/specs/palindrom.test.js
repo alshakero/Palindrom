@@ -495,7 +495,7 @@ describe("Palindrom", () => {
                 () => {
                   assert.equal(2, moxios.requests.count());
                 },
-                10
+                1
               );
 
               /* change ignored property deeply */
@@ -503,7 +503,7 @@ describe("Palindrom", () => {
                 () => {
                   tempObject.$privateProp[1] = 32;
                 },
-                15
+                2
               );
 
               /* we should STILL have two requests, initial and publicProb add only */
@@ -512,10 +512,10 @@ describe("Palindrom", () => {
                   assert.equal(2, moxios.requests.count());
                   done();
                 },
-                20
+                3
               );
             },
-            50
+            4
           );
         }
       });
@@ -552,7 +552,7 @@ describe("Palindrom", () => {
 
           tempObject.$privateProp = 22;
         },
-        10
+        1
       );
 
       /* change ignored property deeply */
@@ -561,7 +561,7 @@ describe("Palindrom", () => {
           assert.equal(1, moxios.requests.count());
           done();
         },
-        11
+        2
       );
     });
 
@@ -596,7 +596,7 @@ describe("Palindrom", () => {
           tempObject.$privateProp = 1;
           tempObject.$privateProp = 2;
         },
-        10
+        1
       );
 
       /*  we should still have one request, initial connection */
@@ -605,7 +605,7 @@ describe("Palindrom", () => {
           assert.equal(1, moxios.requests.count());
           done();
         },
-        11
+        2
       );
     });
   });
