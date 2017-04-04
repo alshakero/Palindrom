@@ -73,8 +73,10 @@ function CapabilityRunner(caps, doneCallback) {
         hadErrored = 1;
       }
     });
-
-    console.log("Summary: ", resultsSummary);
+    console.log("");
+    console.log("Summary for (" + caps.name +")"[hadErrored ? 'red': 'green']);
+    console.log(resultsSummary);
+    console.log("");
     console.log("Ending session: " + driver.sessionID);
 
     const result = {

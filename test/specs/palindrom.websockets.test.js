@@ -221,6 +221,7 @@ describe("Sockets", () => {
       });
       describe("Before connection is established", () => {
         it("shouldn't start a socket connection", function(done) {
+
           const server = new MockSocketServer(
             "ws://localhost/test/this_is_a_nice_url"
           );
@@ -240,10 +241,12 @@ describe("Sockets", () => {
 
           var palindrom = new Palindrom({
             remoteUrl,
-            useWebSocket: true
-          });
-          /* shouldn't connect before XHR */
-          assert(everConnected === false);
+            useWebSocket: true,
+            callback: () => {
+              /* shouldn't connect before XHR */
+              assert(everConnected === false);
+            }
+          });          
 
           /* should connect before XHR */
           moxios.wait(
@@ -252,7 +255,7 @@ describe("Sockets", () => {
               /* stop server async then call done */
               server.stop(done);
             },
-            10
+            20
           );
         });
 
@@ -340,7 +343,7 @@ describe("Sockets", () => {
 
               server.stop(done);
             },
-            10
+            20
           );
         });
 

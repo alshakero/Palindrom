@@ -5678,7 +5678,7 @@ var PalindromDOM = (function () {
 
     if (event.detail && event.detail.target) {
       //detail is Polymer
-      event = Polymer.dom(event);
+      event = event.detail;
     }
 
     var target = event.target;

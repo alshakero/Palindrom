@@ -138,7 +138,6 @@ if (typeof window !== "undefined") {
           });
 
           it("relative path (nested, Shadow DOM content)", function(done) {
-            //wait for platform.js ready
             moxios.wait(
               () => {
                 createLinkTestNestedShadowDOMContent();

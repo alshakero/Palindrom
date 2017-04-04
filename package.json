@@ -60,7 +60,7 @@
     "webpack": "^2.2.1"
   },
   "scripts": {
-    "test": "mocha test/runner.js",
+    "test": "node test/Sauce/Runner.js",
     "test-cli": "mocha test/runner.js"    
   }
 }
