@@ -12031,7 +12031,6 @@ module.exports = __webpack_amd_options__;
 
 /** only run DOM tests in browsers */
 if (typeof window !== "undefined") {
-
   const PalindromDOM = __webpack_require__(171);
   const assert = __webpack_require__(12);
   const moxios = __webpack_require__(14);
@@ -12089,7 +12088,7 @@ if (typeof window !== "undefined") {
   }
   function findShadowDOMButton() {
     const btn = document.querySelector("my-menu-button");
-    return btn && btn.innerText.indexOf('Shadow') > -1;
+    return btn && btn.innerText.indexOf("Shadow") > -1;
   }
   function createLinkTestNestedShadowDOMContent() {
     const btn = document.querySelector("my-menu-button strong");
@@ -12171,23 +12170,25 @@ if (typeof window !== "undefined") {
             }
           });
           /* @tomalec would really appreciate some investigation on this,
-          the button ShadowDOM isn't being loaded sometimes */
-          const func = findShadowDOMButton() ? it : xit;
-          func("relative path (nested, Shadow DOM content)", function(done) {
-            moxios.wait(
-              () => {
-                createLinkTestNestedShadowDOMContent();
+          the button ShadowDOM isn't being loaded sometimes (it doesn't become blue) */
+          it("checking if Button component is loaded", function() {
+            const func = findShadowDOMButton() ? it : xit;
+            func("relative path (nested, Shadow DOM content)", function(done) {
+              moxios.wait(
+                () => {
+                  createLinkTestNestedShadowDOMContent();
 
-                moxios.wait(
-                  function() {
-                    expect(historySpy.callCount).to.equal(1);
-                    done();
-                  },
-                  10
-                );
-              },
-              10
-            );
+                  moxios.wait(
+                    function() {
+                      expect(historySpy.callCount).to.equal(1);
+                      done();
+                    },
+                    10
+                  );
+                },
+                10
+              );
+            });
           });
 
           it("absolute path", function() {
@@ -13665,7 +13666,6 @@ describe("Sockets", () => {
       });
       describe("Before connection is established", () => {
         it("shouldn't start a socket connection", function(done) {
-
           const server = new MockSocketServer(
             "ws://localhost/test/this_is_a_nice_url"
           );
@@ -13690,7 +13690,7 @@ describe("Sockets", () => {
               /* shouldn't connect before XHR */
               assert(everConnected === false);
             }
-          });          
+          });
 
           /* should connect before XHR */
           moxios.wait(
@@ -13779,15 +13779,19 @@ describe("Sockets", () => {
             () => {
               palindrom.obj.firstName = "Omar";
 
-              assert(messages.length === 1);
-              assert(
-                JSON.stringify(messages[0]) ===
-                  '{"op":"add","path":"/firstName","value":"Omar"}'
+              moxios.wait(
+                () => {
+                  assert(messages.length === 1);
+                  assert(
+                    JSON.stringify(messages[0]) ===
+                      '{"op":"add","path":"/firstName","value":"Omar"}'
+                  );
+                  server.stop(done);
+                },
+                10
               );
-
-              server.stop(done);
             },
-            20
+            30
           );
         });
 

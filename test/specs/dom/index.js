@@ -1,6 +1,5 @@
 /** only run DOM tests in browsers */
 if (typeof window !== "undefined") {
-
   const PalindromDOM = require("../../../src/palindrom-dom");
   const assert = require("assert");
   const moxios = require("moxios");
@@ -58,7 +57,7 @@ if (typeof window !== "undefined") {
   }
   function findShadowDOMButton() {
     const btn = document.querySelector("my-menu-button");
-    return btn && btn.innerText.indexOf('Shadow') > -1;
+    return btn && btn.innerText.indexOf("Shadow") > -1;
   }
   function createLinkTestNestedShadowDOMContent() {
     const btn = document.querySelector("my-menu-button strong");
@@ -141,22 +140,24 @@ if (typeof window !== "undefined") {
           });
           /* @tomalec would really appreciate some investigation on this,
           the button ShadowDOM isn't being loaded sometimes (it doesn't become blue) */
-          const func = findShadowDOMButton() ? it : xit;
-          func("relative path (nested, Shadow DOM content)", function(done) {
-            moxios.wait(
-              () => {
-                createLinkTestNestedShadowDOMContent();
+          it("checking if Button component is loaded", function() {
+            const func = findShadowDOMButton() ? it : xit;
+            func("relative path (nested, Shadow DOM content)", function(done) {
+              moxios.wait(
+                () => {
+                  createLinkTestNestedShadowDOMContent();
 
-                moxios.wait(
-                  function() {
-                    expect(historySpy.callCount).to.equal(1);
-                    done();
-                  },
-                  10
-                );
-              },
-              10
-            );
+                  moxios.wait(
+                    function() {
+                      expect(historySpy.callCount).to.equal(1);
+                      done();
+                    },
+                    10
+                  );
+                },
+                10
+              );
+            });
           });
 
           it("absolute path", function() {

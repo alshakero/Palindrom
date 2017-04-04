@@ -221,7 +221,6 @@ describe("Sockets", () => {
       });
       describe("Before connection is established", () => {
         it("shouldn't start a socket connection", function(done) {
-
           const server = new MockSocketServer(
             "ws://localhost/test/this_is_a_nice_url"
           );
@@ -246,7 +245,7 @@ describe("Sockets", () => {
               /* shouldn't connect before XHR */
               assert(everConnected === false);
             }
-          });          
+          });
 
           /* should connect before XHR */
           moxios.wait(
@@ -335,15 +334,19 @@ describe("Sockets", () => {
             () => {
               palindrom.obj.firstName = "Omar";
 
-              assert(messages.length === 1);
-              assert(
-                JSON.stringify(messages[0]) ===
-                  '{"op":"add","path":"/firstName","value":"Omar"}'
+              moxios.wait(
+                () => {
+                  assert(messages.length === 1);
+                  assert(
+                    JSON.stringify(messages[0]) ===
+                      '{"op":"add","path":"/firstName","value":"Omar"}'
+                  );
+                  server.stop(done);
+                },
+                10
               );
-
-              server.stop(done);
             },
-            20
+            30
           );
         });
 

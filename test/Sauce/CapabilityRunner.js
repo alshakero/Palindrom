@@ -69,7 +69,6 @@ function CapabilityRunner(caps, doneCallback) {
         "   " + symbols[spec.state][colorMap[spec.state]] + " " + spec.title
       );
       if (spec.state === "failed") {
-        console.log("Spec Failed");
         hadErrored = 1;
       }
     });
