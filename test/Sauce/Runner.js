@@ -25,7 +25,7 @@ const allCaps = [
   {
     browserName: "MicrosoftEdge",
     platform: "Windows 10",
-    version: "14.14393",
+    version: "14",
     username: username,
     accessKey: accessKey,
     name: "MicrosoftEdge: PalindromDOM tests",

@@ -4,6 +4,7 @@ const Palindrom = require("../../src/palindrom");
 const assert = require("assert");
 const moxios = require("moxios");
 const sinon = require("sinon");
+const expect = require("chai").expect;
 
 describe("Palindrom", () => {
   describe("#constructor", () => {
@@ -28,9 +29,7 @@ describe("Palindrom", () => {
         });
         moxios.wait(
           () => {
-            /* since we have the correct object,
-                it means that Ajax request has happened 
-                successfully, no need for another spec */
+            assert(spy.called);
             assert(spy.calledWith({ hello: "world" }));
             done();
           },

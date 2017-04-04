@@ -74,7 +74,7 @@ function CapabilityRunner(caps, doneCallback) {
       }
     });
     console.log("");
-    console.log("Summary for (" + caps.name +")"[hadErrored ? 'red': 'green']);
+    console.log(("Summary for (" + caps.name +")")[hadErrored ? 'red': 'green']);
     console.log(resultsSummary);
     console.log("");
     console.log("Ending session: " + driver.sessionID);
