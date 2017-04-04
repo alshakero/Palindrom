@@ -61,7 +61,6 @@
   },
   "scripts": {
     "test": "mocha test/runner.js",
-    "test-cli": "mocha test/runner.js"
-    
+    "test-cli": "mocha test/runner.js"    
   }
 }

@@ -5672,29 +5672,24 @@ var PalindromDOM = (function () {
   };
 
   PalindromDOM.prototype.clickHandler = function (event) {
-    //Don't morph ctrl/cmd + click & middle mouse button
     if (event.ctrlKey || event.metaKey || event.which == 2) {
       return;
     }
 
     if (event.detail && event.detail.target) {
       //detail is Polymer
-      event = event.detail;
+      event = Polymer.dom(event);
     }
 
     var target = event.target;
-
     if (target.nodeName !== 'A') {
-        var parent = target.parentNode;
-        while(parent) {
-          if (parent.nodeName == "A") {
-          target = parent;
-          break;
+        for (var i = 0; i < event.path.length; i++) {
+            if (event.path[i].nodeName == "A") {
+                target = event.path[i];
+                break;
+            }
         }
-        parent = parent.parentNode;
-        }        
     }
-
     //needed since Polymer 0.2.0 in Chrome stable / Web Plaftorm features disabled
     //because target.href returns undefined for <polymer-ui-menu-item href="..."> (which is an error)
     //while target.getAttribute("href") returns desired href (as string)
